@@ -1,3 +1,5 @@
+__version__ = "0.1.0"
+
 import kivy
 kivy.require('2.3.0')
 
