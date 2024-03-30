@@ -8,30 +8,24 @@ Config.set('graphics', 'width', '400')
 Config.set('graphics', 'height', '800')
 
 from kivy.app import App
+from kivy.uix.button import Button
 from kivy.uix.widget import Widget
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.gridlayout import GridLayout
-from kivy.properties import (
-    NumericProperty, ReferenceListProperty, ObjectProperty
-)
-from kivy.vector import Vector
-from kivy.clock import Clock
-
+from kivy.properties import ObjectProperty
 
 class WriteIt(Widget):
-    pass
+    text_box = ObjectProperty(None)
+    talk_button = ObjectProperty(None)
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    def update_text(self):
+        self.text_box.text *= 2
 
 class OlegApp(App):
-    def update_text(self):
-        print("Hello")
-
-
     def build(self):
-        game = WriteIt()
-        return game
-
+        app = WriteIt()
+        return app
 
 if __name__ == '__main__':
     OlegApp().run()

@@ -19,6 +19,9 @@
     background_color: .1, .1, .1, 1
 
 <WriteIt>:
+    text_box: text_box
+    talk_button: talk_button
+
     BackgroundBoxLayout:
         size: root.size
         orientation: 'vertical'
@@ -29,6 +32,7 @@
             size_hint: 1, 0.75
 
             Label:
+                id: text_box
                 text: "Hello world "*10
                 padding: 10
                 text_size: self.width, self.height
@@ -40,6 +44,7 @@
             anchor_y: 'bottom'
 
             Button:
+                id: talk_button
                 text: "Push to talk"
                 size_hint: .5, 1
-                on_release: print('Hello')
+                on_release: root.update_text()
