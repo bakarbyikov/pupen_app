@@ -1,51 +1,45 @@
 #:kivy 2.3.0
 
-<PongBall>:
-    size: 50, 50 
-    canvas:
-        Ellipse:
-            pos: self.pos
-            size: self.size          
-
-<PongPaddle>:
-    size: 25, 200
-    canvas:
+<BackgroundColor@Widget>
+    background_color: 1, 1, 1, 1
+    canvas.before:
+        Color:
+            rgba: root.background_color
         Rectangle:
-            pos: self.pos
             size: self.size
+            pos: self.pos
 
-<PongGame>:
-    ball: pong_ball
-    player1: player_left
-    player2: player_right
-    
-    canvas:
-        Rectangle:
-            pos: self.center_x - 5, 0
-            size: 10, self.height
-    
-    Label:
-        font_size: 70  
-        center_x: root.width / 4
-        top: root.top - 50
-        text: str(root.player1.score)
-        
-    Label:
-        font_size: 70  
-        center_x: root.width * 3 / 4
-        top: root.top - 50
-        text: str(root.player2.score)
-    
-    PongBall:
-        id: pong_ball
-        center: self.parent.center
-        
-    PongPaddle:
-        id: player_left
-        x: root.x
-        center_y: root.center_y
-        
-    PongPaddle:
-        id: player_right
-        x: root.width - self.width
-        center_y: root.center_y
+<BackgroundBoxLayout@BoxLayout+BackgroundColor>
+    background_color: .2, .2, .2, 1
+
+<BackgroundLabel@Label+BackgroundColor>
+    background_color: .5, .5, .5, .5
+
+<BackgroundAnchorLayout@AnchorLayout+BackgroundColor>
+    background_color: .1, .1, .1, 1
+
+<WriteIt>:
+    BackgroundBoxLayout:
+        size: root.size
+        orientation: 'vertical'
+        padding: 10
+        spacing: 20
+
+        BackgroundAnchorLayout:
+            size_hint: 1, 0.75
+
+            Label:
+                text: "Hello world "*10
+                padding: 10
+                text_size: self.width, self.height
+                halign: 'left'
+                valign: 'top'
+
+        AnchorLayout:
+            size_hint: 1, 0.25
+            anchor_y: 'bottom'
+
+            Button:
+                text: "Push to talk"
+                size_hint: .5, 1
+                on_release: print('Hello')
