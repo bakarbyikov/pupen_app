@@ -10,25 +10,20 @@
             pos: self.pos
 
 <BackgroundBoxLayout@BoxLayout+BackgroundColor>
-    background_color: .2, .2, .2, 1
-
-<BackgroundLabel@Label+BackgroundColor>
-    background_color: .5, .5, .5, .5
-
-<BackgroundAnchorLayout@AnchorLayout+BackgroundColor>
-    background_color: .1, .1, .1, 1
 
 <WriteIt>:
     text_box: text_box
     talk_button: talk_button
 
     BackgroundBoxLayout:
+        background_color: .2, .2, .2, 1
         size: root.size
         orientation: 'vertical'
         padding: 10
         spacing: 20
 
-        BackgroundAnchorLayout:
+        BackgroundBoxLayout:
+            background_color: .1, .1, .1, 1
             size_hint: 1, 0.75
 
             Label:
